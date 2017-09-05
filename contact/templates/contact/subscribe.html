@@ -1,0 +1,12 @@
+{% extends "contact/subscribe_base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Subscribe{% endblock %}
+
+{% block form_heading %}Subscribe Now{% endblock %}
+
+{% block form %}
+  {% crispy form %}
+
+{% endblock form %}

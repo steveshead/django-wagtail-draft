@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load staticfiles %}
+    {% load thumbnail %}
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block description %}{% endblock description %}">
+    <meta name="author" content="Arun Ravindran">
+    <link rel="apple-touch-icon" sizes="57x57" href="{% static 'site/img/favicon/apple-icon-57x57.png' %}">
+    <link rel="apple-touch-icon" sizes="60x60" href="{% static 'site/img/favicon/apple-icon-60x60.png' %}">
+    <link rel="apple-touch-icon" sizes="72x72" href="{% static 'site/img/favicon/apple-icon-72x72.png' %}">
+    <link rel="apple-touch-icon" sizes="76x76" href="{% static 'site/img/favicon/apple-icon-76x76.png' %}">
+    <link rel="apple-touch-icon" sizes="114x114" href="{% static 'site/img/favicon/apple-icon-114x114.png' %}">
+    <link rel="apple-touch-icon" sizes="120x120" href="{% static 'site/img/favicon/apple-icon-120x120.png' %}">
+    <link rel="apple-touch-icon" sizes="144x144" href="{% static 'site/img/favicon/apple-icon-144x144.png' %}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{% static 'site/img/favicon/apple-icon-152x152.png' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'site/img/favicon/apple-icon-180x180.png' %}">
+    <link rel="icon" type="image/png" sizes="192x192"  href="{% static 'site/img/favicon/android-icon-192x192.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'site/img/favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="96x96" href="{% static 'site/img/favicon/favicon-96x96.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'site/img/favicon/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'site/img/favicon/manifest.json' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{% static 'site/img/favicon/ms-icon-144x144.png' %}">
+    <meta name="theme-color" content="#ffffff">
+
+    <title>{% block title %}{% include "_brandname.html" %} :: {% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this site -->
+    {% block styles %}
+    <link href="{% static 'site/css/main.css' %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'site/css/bootstrap-social.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300|Raleway:500,600,700" rel="stylesheet">
+    {% endblock styles %}
+
+    <!-- Custom tags for the head tag -->
+    {% block extrahead %}{% endblock extrahead %}
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body id="top">
+
+    {% block navbar %}
+
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container"><!-- start nav container -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'home' %}">
+            {% block navbar-brand %}
+              <img src="{% static 'site/img/logo-idesign.png' %}" width="20" alt="logo">
+              {% include "_brandname.html" %}
+            {% endblock %}
+          </a>
+        </div>
+        {% block navbar-menu %}
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            {% block navbar-left %}{% endblock %}
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            {% block navbar-right %}
+              {% if user.is_authenticated %}
+                {% if user.is_staff %}
+                <li><a href="{% url 'admin:index' %}">Admin</a></li>
+                {% endif %}
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle profile-menu" data-toggle="dropdown">
+			<img src="{% thumbnail user.profile.picture|default:'default_profile.png' 30x30 crop %}" alt="" />
+			{{ user.get_full_name|truncatechars:20 }}
+			<span class="caret"></span>
+		    </a>
+
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="{% url 'profiles:show_self' %}">Profile</a></li>
+                    <li><a href="{% url 'accounts:logout' %}">Logout</a></li>
+                  </ul>
+                </li>
+              {% endif %}
+            {% endblock %}
+          </ul>
+          </ul>
+        </div><!--/.nav-collapse -->
+        {% endblock %}
+    </div><!--/ end nav container -->
+</div>
+
+    {% endblock navbar %}
+
+    {% block messages %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">  <!-- singular -->
+            <a class="close" data-dismiss="alert">×</a>
+            {{ message|safe }}
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endblock %}
+
+    {% block splash %}
+    {% endblock splash %}
+
+    {% block container %}
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>New Project</h1>
+        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+      </div>
+
+    </div><!-- /.container -->
+    {% endblock container %}
+
+    <!-- Site footer -->
+    {% block footer %}
+      <!-- Some social button for contact will do -->
+      <footer id="footer-Section">
+        <div class="footer-top-layout">
+          <div class="container">
+            <div class="row">
+              <div class="OurBlog">
+                <h3 class="footer-brand text-center"><strong>S2 </strong><span>iDESIGN</span></h3>
+                <p><em>"Inspired by Genius - Driven by Passion"</em></p>
+                <div class="post-blog-date">Today's Date: {% now 'd, M, Y' %}</div>
+              </div>
+              <div class=" col-lg-8 col-lg-offset-2">
+                <div class="col-sm-4">
+                  <div class="footer-col-item">
+                    <h4><strong>S2</strong><span>iDESIGN</span></h4>
+                    <address>
+                    123 The Hight Street<br>
+                    San Jose, California, 95125<br>
+                    United States
+                    </address>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="footer-col-item">
+                    <h4>Contact Us</h4>
+                    <div class="item-contact">
+                      <a href="tel:408-555-1234"><span class="link-id">P</span>:<span>408-555-1234</span></a>
+                      <a href="tel:408-555.2345"><span class="link-id">F</span>:<span>408-555.2345</span></a>
+                      <a href="mailto:you@yourcompany.com"><span class="link-id">E</span>:<span>you@yourcompany.com</span></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-4">
+                  <div class="footer-col-item">
+                    <h4>Newsletter Sign Up</h4>
+                    <form class="signUpNewsletter" action="" method="get">
+                      <input name="" class="gt-email form-control" placeholder="Enter Email" type="text">
+                      <input name="" class="btn-go" value="Go" type="button">
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom-layout">
+          <div class="copyright-tag">Copyright © {% now 'Y' %} iDESIGN.</div>
+<!-- social if wanted
+          <a class="btn btn-social-icon btn-github">
+            <span class="fa fa-github"></span>
+          </a>
+          <a class="btn btn-social-icon btn-twitter">
+            <span class="fa fa-twitter"></span>
+          </a>
+          <a class="btn btn-social-icon btn-linkedin">
+            <span class="fa fa-linkedin"></span>
+          </a>
+          <a class="btn btn-social-icon btn-facebook">
+            <span class="fa fa-facebook"></span>
+          </a>
+          <a class="btn btn-social-icon btn-google">
+            <span class="fa fa-google"></span>
+          </a>
+          <a class="btn btn-social-icon btn-instagram">
+            <span class="fa fa-instagram"></span>
+          </a>
+          <a class="btn btn-social-icon btn-pinterest">
+            <span class="fa fa-pinterest"></span>
+          </a>-->
+        </div>
+      </footer>
+    {% endblock %}
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    {% block scripts %}
+    {% endblock scripts %}
+  </body>
+</html>

@@ -1,0 +1,293 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block title %}{{ block.super }}Home{% endblock %}
+
+{% block navbar-left %}
+  {% include "_navbar.html" %}
+{% endblock %}
+
+{% block navbar-right %}
+  {% if not user.is_authenticated %}
+<a class="navSignin" href="{% url 'accounts:login' %}">SIGN IN</a>
+<a class="btn btn-sm btn-primary" href="{% url 'accounts:signup' %}" role="button">SIGN UP</a>
+  {% else %}
+    {{ block.super }}
+  {% endif %}
+{% endblock %}
+
+{% block splash %}
+<div class="photo">
+    <div id="box-2">
+      <h1>In The City We Dream<br /><span>inspired by genius - driven by passion</span><br /><button class="btn btn-outline">CONCLUSIONS</button></h1>
+    </div>
+
+    <div id="box-3">
+      <h1>until all becomes fluid<br /><span>inspired by genius - driven by passion</span><br /><button class="btn btn-outline">CONCLUSIONS</button></h1>
+    </div>
+
+    <div id="box-1">
+      <h1>imagination is creation<br /><span>inspired by genius - driven by passion</span><br /><button class="btn btn-outline">CONCLUSIONS</button></h1>
+    </div>
+</div>
+{% endblock splash %}
+
+{% block container %}
+<!-- Benefits of the Django application -->
+<a name="features"></a>
+<section class="feature">
+    <div class="container">
+        <div class="center idesign">
+            <h1>iDesign <span>Features</span></h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut et dolore magna aliqua. Ut enim ad minim veniam </p>
+        </div>
+        <div class="row">
+            <div class="col-md-12 fetures">
+                <div class="col-md-4 col-sm-6 wow fadeInDown">
+                    <div class="feature-wrap"><i class="fa fa-bullhorn"></i>
+                        <h2>Fresh and Clean </h2>
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit </h3></div>
+                </div>
+                <div class="col-md-4 col-sm-6 wow fadeInDown">
+                    <div class="feature-wrap"><i class="fa fa-comments"></i>
+                        <h2>Retina ready</h2>
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit </h3></div>
+                </div>
+                <div class="col-md-4 col-sm-6 wow fadeInDown">
+                    <div class="feature-wrap"><i class="fa fa-cloud-download"></i>
+                        <h2>Easy to customize</h2>
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit </h3></div>
+                </div>
+                <div class="col-md-4 col-sm-6 wow fadeInDown">
+                    <div class="feature-wrap"><i class="fa fa-leaf"></i>
+                        <h2>Adipisicing elit</h2>
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit </h3></div>
+                </div>
+                <div class="col-md-4 col-sm-6 wow fadeInDown">
+                    <div class="feature-wrap"><i class="fa fa-bullhorn"></i>
+                        <h2>Fresh and Clean </h2>
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit </h3></div>
+                </div>
+                <div class="col-md-4 col-sm-6 wow fadeInDown">
+                    <div class="feature-wrap"><i class="fa fa-cogs"></i>
+                        <h2>Sed do eiusmod</h2>
+                        <h3>Lorem ipsum dolor sit amet, consectetur adipisicing elit </h3></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="newsletter">
+  <div class="container">
+    <div class="row">
+
+        <div class="col-md-7">
+          <h3 class="pull-right">Subscribe to our Newsletter</h3>
+        </div>
+
+        <div class="col-md-5">
+          <a href="/subscribe/" class="btn btn-primary">SUBSCRIBE NOW</a>
+        </div>
+
+      </div>
+    </div>
+</section>
+
+<section class="callout">
+  <div class="container">
+    <div class="row text-center">
+      <div class="col-md-12">
+        <img class="img-responsive" src="{% static 'site/img/macbook-pro.png' %}" />
+        <h1>Inspirational Design & Development</h1>
+        <p>Inspired by Genius - Driven by Passion - Built by Humans</p>
+        <a href="#" class="btn btn-primary">View Our Portfolio</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="gallery">
+  <div class="container">
+  	<div class="row idesign">
+  		<h1 class="text-center">iDesign <span>Gallery</span></h1>
+  	</div>
+
+      <div class="text-center">
+          <button class="btn btn-transparent filter-button" data-filter="all">All</button>
+          <button class="btn btn-transparent filter-button" data-filter="photo">Development</button>
+          <button class="btn btn-transparent filter-button" data-filter="graphic">Design</button>
+          <button class="btn btn-transparent filter-button" data-filter="webdesign">Display</button>
+      </div>
+      <br/>
+
+      <div class="row">
+          <div class="col-md-3 filter photo">
+              <div class="each-item">
+                  <img class="port-image img-responsive" src="{% static 'site/img/gallery/2.jpg' %}"/>
+                  <div class="cap1">
+                      <h3>Lorem Ipsum</h3>
+                      <p>Maecenas tempus, tellus eget condimentum rhoncus.</p>
+                  </div>
+                  <div class="cap2">
+                      <p class="text-center visit">Visit</p>
+                  </div>
+
+              </div>
+
+          </div>
+
+          <div class="col-md-3 filter graphic photo">
+              <div class="each-item">
+                <img class="port-image img-responsive" src="{% static 'site/img/gallery/1.jpg' %}"/>
+                  <div class="cap1">
+                      <h3>Dolor Sit</h3>
+                      <p>Maecenas tempus, tellus eget condimentum rhoncus.</p>
+                  </div>
+                  <div class="cap2">
+                      <p class="text-center visit">Visit</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-3 filter webdesign">
+              <div class="each-item">
+                <img class="port-image img-responsive" src="{% static 'site/img/gallery/4.jpg' %}"/>
+                  <div class="cap1">
+                      <h3>Ut Enim</h3>
+                      <p>Maecenas tempus, tellus eget condimentum rhoncus.</p>
+                  </div>
+                  <div class="cap2">
+                      <p class="text-center visit">Visit</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-3 filter graphic photo">
+              <div class="each-item">
+                <img class="port-image img-responsive" src="{% static 'site/img/gallery/5.jpg' %}"/>
+                  <div class="cap1">
+                      <h3>Ad Minim</h3>
+                      <p>Maecenas tempus, tellus eget condimentum rhoncus.</p>
+                  </div>
+                  <div class="cap2">
+                      <p class="text-center visit">Visit</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-3 filter webdesign graphic">
+              <div class="each-item">
+                <img class="port-image img-responsive" src="{% static 'site/img/gallery/7.jpg' %}"/>
+                  <div class="cap1">
+                      <h3>Tempor Et</h3>
+                      <p>Maecenas tempus, tellus eget condimentum rhoncus.</p>
+                  </div>
+                  <div class="cap2">
+                      <p class="text-center visit">Visit</p>
+                  </div>
+              </div>
+          </div>
+
+          <div class="col-md-3 filter photo">
+              <div class="each-item">
+                <img class="port-image img-responsive" src="{% static 'site/img/gallery/3.jpg' %}"/>
+                  <div class="cap1">
+                      <h3>Dolor Elit</h3>
+                      <p>Maecenas tempus, tellus eget condimentum rhoncus.</p>
+                  </div>
+                  <div class="cap2">
+                      <p class="text-center visit">Visit</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3 filter photo">
+              <div class="each-item">
+                <img class="port-image img-responsive" src="{% static 'site/img/gallery/6.jpg' %}"/>
+                  <div class="cap1">
+                      <h3>Ad Veniam</h3>
+                      <p>Maecenas tempus, tellus eget condimentum rhoncus.</p>
+                  </div>
+                  <div class="cap2">
+                      <p class="text-center visit">Visit</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-3 filter photo">
+              <div class="each-item">
+                <img class="port-image img-responsive" src="{% static 'site/img/gallery/8.jpg' %}"/>
+                  <div class="cap1">
+                      <h3>Elit Ipsum</h3>
+                      <p>Maecenas tempus, tellus eget condimentum rhoncus.</p>
+                  </div>
+                  <div class="cap2">
+                      <p class="text-center visit">Visit</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<section class="quotes">
+  <div class="container">
+    <div class="row text center">
+      <div class="col-md-12">
+        <h1>The Definition of <span>Design</span></h1>
+        <h3>Inspiration Defines <span>Creativity</span></h3>
+        <a class="btn btn-primary" href="#">OUR PHILOSOPHY</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="twin-pane">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-md-6 twin-pane-left">
+        <div class="twin-pane-inner">
+        <h1>THE DESIGN</h1>
+      </div>
+    </div>
+      <div class="col-md-6 twin-pane-right">
+        <div class="twin-pane-inner">
+        <h1>THE GENIUS</h1>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-7">
+        <h2 class="text-center">Contact Details</h2>
+        <p>Free free to send us a note. We will endeavor to get back to you within 24hrs. Also, we promise we will never use your email address for anything other than to chat with you, nothing more, nothing less, period, full stop - Thank You!</p>
+        <iframe class="gmap" src="//www.google.com/maps/embed/v1/place?q=San%20Jose,California,%20USA&zoom=14&key=AIzaSyA7sJOlbThz4QfXqWrAvfwljKTwdu-5gfA" width="100%" height="350"></iframe>
+      </div>
+
+      <div class="col-md-4 col-md-offset-1">
+        <h2 class="text-center">The Form</h2>
+        <form method="post" action="contact/">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">SEND YOUR MESSAGE</button>
+            </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% endblock container %}
+
+{% block scripts %}
+<script src="{% static 'site/js/site.js' %}"></script>
+{% endblock scripts %}
