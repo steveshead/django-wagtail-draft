@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load wagtailcore_tags wagtailimages_tags %}
+
 {% load staticfiles %}
 {% load crispy_forms_tags %}
 
@@ -78,6 +80,32 @@
             </div>
         </div>
     </div>
+</section>
+
+<section id="news" class="news">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Latest News</h1>
+
+        {% for news in news %}
+        <div class="col-md-8">
+        <a class="blog-post-link" href="{% pageurl news %}">
+            <h3>{{ news.title }}</h3>
+        </a>
+        <div class="blog-intro">
+          {{ news.body | richtext|truncatewords_html:30 }}
+            <a class="btn btn-primary" href="{% pageurl news %}">Read More &raquo;</a>
+        </div>
+      </div>
+        {% endfor %}
+<div class="col-md-4">
+<h4>Read more news</h4>
+<a class="btn btn-primary" href="/news/">More Articles</a>
+</div>
+      </div>
+    </div>
+  </div>
 </section>
 
 <section class="newsletter">

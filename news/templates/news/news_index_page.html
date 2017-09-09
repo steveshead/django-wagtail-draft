@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}template-blogindexpage{% endblock %}
+
+{% block container %}
+<section class="news-index-page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 post-index-article">
+
+      <h1 class="text-center">{{ page.title }}</h1>
+      <div class="intro">{{ page.intro|richtext }}</div>
+
+      {% for post in blogpages %}
+          {% with post=post.specific %}
+              <h2 class="text-center"><a href="{% pageurl post %}">{{ post.title }}</a></h2>
+
+              {% with post.main_image as main_image %}
+                  {% if main_image %}{% image main_image width-600 %}{% endif %}
+              {% endwith %}
+
+              <p class="text-center">{{ post.intro }}</p>
+              {{ post.body|richtext|truncatewords_html:50 }}
+              <a class="btn btn-primary" href="{% pageurl post %}">Read More &raquo;</a>
+              <hr>
+
+          {% endwith %}
+      {% endfor %}
+
+      <div class="row">
+  <div class="col-md-12">
+    <ul class="pagination">
+      {% if blogpages.has_previous %}
+        <li>
+          <a href="?page={{ blogpages.previous_page_number }}"><i class="fa fa-angle-left"></i></a>
+        </li>
+      {% endif %}
+      {% for page_num in blogpages.paginator.page_range %}
+        <li {% if page_num == blogpages.number %} class="active"{% endif %}>
+          <a href="?page={{ page_num }}">{{ page_num }}</a>
+        </li>
+      {% endfor %}
+      {% if resources.has_next %}
+        <li>
+          <a href="?page={{ blogpages.next_page_number }}"><i class="fa fa-angle-right"></i></a>
+        </li>
+        {% endif %}
+    </ul>
+  </div>
+</div>
+      </div>
+
+      <div class="col-md-4 sidebar">
+
+
+
+        <div class="profile-sidebar">
+        				<!-- SIDEBAR USERPIC -->
+        				<div class="profile-userpic">
+        					<img src="#" class="img-responsive" alt="">
+        				</div>
+        				<!-- END SIDEBAR USERPIC -->
+        				<!-- SIDEBAR USER TITLE -->
+        					<div class="sidebar-user text-center">
+                    {% if user.is_authenticated %}
+        						  <h3>Welcome {{ user.get_full_name }}</h3>
+                      <p>We're glad you're here!</p>
+                    {% else %}
+                      <h3>Welcome Guest</h3>
+        						<p>Please sign in or sign up.</p>
+                    {% endif %}
+                    <p>Today is: {% now 'd M, Y' %}</p>
+
+        					</div>
+        				<!-- END SIDEBAR USER TITLE -->
+        				<!-- SIDEBAR BUTTONS -->
+        				<div class="profile-userbuttons">
+                  {% if user.is_authenticated %}
+                    <a class="btn btn-primary" href="{% url 'profiles:show_self' %}" role="button">Profile</a>
+                    <a class="btn btn-default" href="{% url 'accounts:logout' %}" role="button">Sign Out</a>
+                      {% else %}
+                    <a class="btn btn-primary" href="{% url 'accounts:login' %}" role="button">Sign In</a>
+                    <a class="btn btn-default" href="{% url 'accounts:signup' %}" role="button">Sign Up</a>
+                  {% endif %}
+                  <hr>
+        				</div>
+        				<!-- END SIDEBAR BUTTONS -->
+        				<!-- SIDEBAR MENU -->
+                <div class="row">
+
+                <div class="col-md-8 col-md-offset-2">
+        				<div class="profile-usermenu">
+                  <h3 class="text-center">Navigation</h3>
+        					<ul class="nav">
+        						<li class="active">
+        							<a href="/">
+        							<i class="glyphicon glyphicon-home"></i>
+        							Home </a>
+        						</li>
+        						<li>
+        							<a href="/#features">
+        							<i class="glyphicon glyphicon-user"></i>
+        							Features </a>
+        						</li>
+        						<li>
+        							<a href="/#gallery" target="_blank">
+        							<i class="glyphicon glyphicon-picture"></i>
+        							Gallery </a>
+        						</li>
+        						<li>
+        							<a href="/#contact">
+        							<i class="glyphicon glyphicon-envelope"></i>
+        							Contact </a>
+        						</li>
+        					</ul>
+        				</div>
+              </div>
+            </div>
+            <hr>
+        			<!-- END MENU -->
+        			</div>
+
+          <div class="col-md-12 text-center">
+            <h3 class="text-center">Subscribe Now</h3>
+            <p class="text-justify mb-25">Subscribe to our company newsletter and be the first to get the latest and greatest news as it happens.</p>
+            <a class="btn btn-primary" href="/subscribe/">SUBSCRIBE</a>
+            <hr>
+        </div>
+
+        <div class="col-md-12 text-center">
+          <h3 class="mb-25">About Us</h3>
+          <img class="mb-25" style="border:10px solid #f5f5f5;box-shadow: 0 0 1px #999;" src="http://placehold.it/175x175" />
+          <p class="text-justify">Cras dapibus. Etiam iaculis nunc ac metus. Suspendisse pulvinar, augue ac venenatis condimentum, sem libero volutpat nibh, nec pellentesque velit pede quis nunc. Praesent nec nisl a purus blandit viverra. Fusce egestas elit eget lorem. Nullam tincidunt adipiscing enim.</p>
+          <hr>
+        </div>
+
+        <div class="col-md-12">
+          <h3 class="mb-25 text-center">Social media</h3>
+          <ul class="social-network social-circle text-center">
+              <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+              <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+          <hr>
+        </div>
+
+        <div class="col-md-12 gallery">
+          <h3 class="mb-25 text-center">Gallery</h3>
+          <div class="row mb-25">
+            <div class="col-md-6">
+              <img class="img-responsive" src="http://placehold.it/200x200" />
+            </div>
+            <div class="col-md-6">
+              <img class="img-responsive" src="http://placehold.it/200x200" />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <img class="img-responsive" src="http://placehold.it/200x200" />
+            </div>
+            <div class="col-md-6">
+              <img class="img-responsive" src="http://placehold.it/200x200" />
+            </div>
+          </div>
+          <hr>
+        </div>
+
+        </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

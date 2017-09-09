@@ -19,6 +19,11 @@ a {
   font-weight: 300;
 }
 
+a:hover {
+  text-decoration: none !important;
+  color: #016795;
+}
+
 p {
   font-family: 'Montserrat', sans-serif;
   font-weight: 200;
@@ -29,8 +34,33 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
 }
 
+hr {
+  border: 0;
+  border-top: 1px dashed #8c8c8c;
+  text-align:center;
+}
+hr:after {
+  content: '\002702';
+  display: inline-block;
+  position: relative;
+  top: -13px;
+  padding: 0 3px;
+  background: #fff;
+  color: #8c8c8c;
+  font-size: 18px;
+}
+
 .mb-45 {
   margin-bottom: 45px;
+}
+
+.mb-25 {
+  margin-bottom: 25px;
+}
+
+.intro {
+  font-size: 22px;
+  margin-bottom: 10px;
 }
 
 .idesign h1::first-letter {
@@ -678,4 +708,207 @@ iframe.gmap {
   border: 10px solid #fff;
   box-shadow: 0 0 1px #777;
   margin-top: 30px;
+}
+
+/* news page */
+.news-page h1 {
+  margin-bottom: 0;
+}
+
+.post-image {
+  float: left;
+  margin: 20px 30px 10px 0;
+}
+
+.post-image-caption {
+  margin-top: 10px;
+}
+
+.post-index-article {
+  padding: 20px 30px;
+}
+
+.post-index-article .btn {
+  margin-bottom: 50px;
+  margin-top: 10px;
+}
+
+.post-index-article h2 {
+  margin-top: 50px;
+}
+
+.post-index-article h2 a {
+  font-weight: 600;
+}
+
+.post-index-article img {
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.pagination>li>a, .pagination>li>span {
+  background-color: #ddd;
+}
+
+/* sidebar */
+.sidebar hr {
+  margin-top: 50px;
+}
+
+.sidebar {
+  padding: 20px;
+  border: 1px solid #eee;
+}
+
+/* social icons */
+ul.social-network {
+	padding: 0;
+}
+ul.social-network li {
+	display: inline;
+	margin: 0 5px;
+}
+
+.social-network a.icoRss:hover {
+	background-color: #F56505;
+}
+.social-network a.icoFacebook:hover {
+	background-color:#3B5998;
+}
+.social-network a.icoTwitter:hover {
+	background-color:#33ccff;
+}
+.social-network a.icoGoogle:hover {
+	background-color:#BD3518;
+}
+.social-network a.icoVimeo:hover {
+	background-color:#0590B8;
+}
+.social-network a.icoLinkedin:hover {
+	background-color:#007bb7;
+}
+.social-network a.icoRss:hover i, .social-network a.icoFacebook:hover i, .social-network a.icoTwitter:hover i,
+.social-network a.icoGoogle:hover i, .social-network a.icoVimeo:hover i, .social-network a.icoLinkedin:hover i {
+	color:#fff;
+}
+a.socialIcon:hover, .socialHoverClass {
+	color:#44BCDD;
+}
+
+.social-circle li a {
+	display:inline-block;
+	position:relative;
+	margin:0 auto 0 auto;
+	-moz-border-radius:50%;
+	-webkit-border-radius:50%;
+	border-radius:50%;
+	text-align:center;
+	width: 45px;
+	height: 45px;
+	font-size:20px;
+  background-color: #158cba;
+}
+.social-circle li i {
+	margin:0;
+	line-height:45px;
+	text-align: center;
+}
+
+.social-circle li a:hover i, .triggeredHover {
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-ms--transform: rotate(360deg);
+	transform: rotate(360deg);
+	-webkit-transition: all 0.2s;
+	-moz-transition: all 0.2s;
+	-o-transition: all 0.2s;
+	-ms-transition: all 0.2s;
+	transition: all 0.2s;
+}
+.social-circle i {
+	color: #fff;
+	-webkit-transition: all 0.8s;
+	-moz-transition: all 0.8s;
+	-o-transition: all 0.8s;
+	-ms-transition: all 0.8s;
+	transition: all 0.8s;
+}
+
+/* Profile sidebar */
+.sidebar-user h3 {
+  margin-bottom: 0
+}
+
+.sidebar-user p {
+  margin-bottom: 0;
+}
+
+.sidebar .profile-sidebar {
+  padding: 20px 0 10px 0;
+  background: #fff;
+}
+
+.sidebar .profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.sidebar .profile-userbuttons {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.sidebar .profile-userbuttons .btn {
+  text-transform: uppercase;
+  margin-top: 15px;
+}
+
+.sidebar .profile-userbuttons .btn:first-child {
+  margin-right: 10px;
+}
+
+.sidebar .profile-usermenu {
+  margin-top: 30px;
+}
+
+.sidebar .profile-usermenu ul li {
+  border-bottom: 1px solid #f0f4f7;
+}
+
+.sidebar .profile-usermenu ul li:last-child {
+  border-bottom: none;
+}
+
+.sidebar .profile-usermenu ul li a {
+  color: #93a3b5;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.sidebar .profile-usermenu ul li a i {
+  margin-right: 8px;
+  font-size: 14px;
+}
+
+.sidebar .profile-usermenu ul li a:hover {
+  background-color: #fafcfd;
+  color: #5b9bd1;
+}
+
+.sidebar .profile-usermenu ul li.active {
+  border-bottom: none;
+}
+
+.sidebar .profile-usermenu ul li.active a {
+  color: #5b9bd1;
+  background-color: #f6f9fb;
+  border-left: 2px solid #5b9bd1;
+  margin-left: -2px;
 }
