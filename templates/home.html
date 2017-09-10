@@ -89,20 +89,20 @@
         <h1 class="text-center">Latest News</h1>
 
         {% for news in news %}
-        <div class="col-md-8">
+        <div class="col-md-4">
+          {% image news.main_image original class="img-responsive" %}
+        </div>
+        <div class="col-md-8 pr-30">
         <a class="blog-post-link" href="{% pageurl news %}">
             <h3>{{ news.title }}</h3>
         </a>
         <div class="blog-intro">
-          {{ news.body | richtext|truncatewords_html:30 }}
-            <a class="btn btn-primary" href="{% pageurl news %}">Read More &raquo;</a>
+          {{ news.body | richtext|truncatewords_html:50 }}
+            <a class="btn btn-sm btn-primary" href="{% pageurl news %}">Read Article &raquo;</a>
+            <a class="btn btn-sm btn-default" href="/news/">More Articles</a>
         </div>
       </div>
         {% endfor %}
-<div class="col-md-4">
-<h4>Read more news</h4>
-<a class="btn btn-primary" href="/news/">More Articles</a>
-</div>
       </div>
     </div>
   </div>

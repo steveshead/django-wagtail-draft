@@ -50,12 +50,21 @@ hr:after {
   font-size: 18px;
 }
 
+.btn {
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
 .mb-45 {
   margin-bottom: 45px;
 }
 
 .mb-25 {
   margin-bottom: 25px;
+}
+
+.pr-30 {
+  padding-right: 30px;
 }
 
 .intro {
@@ -319,6 +328,19 @@ div.center {
   border:3px solid #008cba;
   box-shadow:0 0 0 5px #008cba inset;
   color:#fff;
+}
+
+/* news */
+.news {
+  background-color: rgba(253,234,227,0.2);
+  border-top: 1px solid rgba(253,234,227,0.6);
+  border-bottom: 1px solid rgba(253,234,227,0.6);
+}
+
+.news img {
+  float: left;
+  margin-top: 25px;
+  margin-right: 10px;
 }
 
 /* newsletter */
@@ -858,6 +880,8 @@ a.socialIcon:hover, .socialHoverClass {
   -webkit-border-radius: 50% !important;
   -moz-border-radius: 50% !important;
   border-radius: 50% !important;
+  width: 120px;
+  height: 120px;
 }
 
 .sidebar .profile-userbuttons {
