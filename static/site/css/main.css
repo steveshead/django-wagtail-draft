@@ -343,6 +343,10 @@ div.center {
   margin-right: 10px;
 }
 
+.blog-intro a.btn{
+  margin-right: 10px;
+}
+
 /* newsletter */
 section.newsletter {
   padding-top: 0;
@@ -735,6 +739,10 @@ iframe.gmap {
 /* news page */
 .news-page h1 {
   margin-bottom: 0;
+}
+
+.news-page .btn:first-child {
+  margin-right: 10px;
 }
 
 .post-image {
